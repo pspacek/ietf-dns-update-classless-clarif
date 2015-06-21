@@ -3,7 +3,7 @@
 <!ENTITY rfc2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY rfc2136 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2136.xml">
 <!ENTITY rfc2317 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2317.xml">
-<!ENTITY rfc2846 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2846.xml">
+<!ENTITY rfc3007 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3007.xml">
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt"?>
 
@@ -36,14 +36,26 @@
 			<t>TODO:
 			This document clarifies interaction among Dynamic Updates
 			in the Domain Name System (DNS UPDATE), Classless IN-ADDR.ARPA delegation,
-			and Secret Key Transaction Authentication for DNS (TSIG).
+			and Secure Domain Name System (DNS) Dynamic Update.
       </t>
     </abstract>
   </front>
 
   <middle>
     <section title="Introduction">
-      <t>Classless IN-ADDR.ARPA delegation <xref target="RFC2317"/>.</t>
+			<t>This document clarifies interaction among Dynamic Updates
+				in the Domain Name System (DNS UPDATE) <xref target="RFC2136"/>, Classless IN-ADDR.ARPA delegation <xref target="RFC2317"/>,
+				and Secure Domain Name System (DNS) Dynamic Update <xref target="RFC3007"/>.</t>
+
+			<t>RFC 2317 describes how to use CNAME records in IN-ADDR.ARPA DNS zones to split
+				administrative control over IN-ADDR.ARPA data. The described method is perfectly
+				compatible with standard DNS resolution but DNS update requests need special handling.</t>
+
+			<t>Before introduction of RFC 2317, clients were able to generate node name </t>
+
+			<t>The problem is that RFC 2136 section DNS node names in DNS Update messages to succesfully update intended nodes.</t>
+
+      <t>Classless IN-ADDR.ARPA delegation <xref target="RFC2317"/> introduced .</t>
 		</section>
 
     <section title="Document Conventions">
@@ -73,7 +85,7 @@
       &rfc2119;
       &rfc2136;
       &rfc2317;
-      &rfc2846;
+      &rfc3007;
     </references>
   </back>
 </rfc>
