@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY rfc2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY rfc2136 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2136.xml">
+<!ENTITY rfc2317 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2317.xml">
+<!ENTITY rfc2846 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2846.xml">
+]>
+<?xml-stylesheet type="text/xsl" href="rfc2629.xslt"?>
+
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<?rfc toc="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc rfcedstyle="yes"?>
+<?rfc autobreaks="yes"?>
+<?rfc docmapping="yes"?>
+
+<rfc category="std" docName="draft-spacek-dnsop-update-clarif-00"
+      ipr="trust200902">
+  <front>
+    <title abbrev="DNS UPDATE clarifications">Clarifications to the Classless IN-ADDR.ARPA Delegation</title>
+
+    <author fullname="Petr Spacek" initials="P." surname="Spacek">
+      <organization>Red Hat, Inc.</organization>
+      <address><email>pspacek@redhat.com</email></address>
+    </author>
+
+    <date month="June" year="2015" />
+
+    <area>Operations and Management</area>
+    
+    <workgroup>Internet Engineering Task Force</workgroup>
+
+    <abstract>
+			<t>TODO:
+			This document clarifies interaction among Dynamic Updates
+			in the Domain Name System (DNS UPDATE), Classless IN-ADDR.ARPA delegation,
+			and Secret Key Transaction Authentication for DNS (TSIG).
+      </t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section title="Introduction">
+      <t>Classless IN-ADDR.ARPA delegation <xref target="RFC2317"/>.</t>
+		</section>
+
+    <section title="Document Conventions">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in <xref
+      target="RFC2119"/>.</t>
+    </section>
+
+    <section title="IANA Considerations">
+      <t>This draft does not involve IANA Considerations.</t>
+    </section>
+
+    <section title="Security Considerations">
+			<t>TODO:
+			Canonicalization allows the active attacker to redirect the update
+			to a node of his choice. Update authentication using TSIG or other means
+			should allow clients to modify only minimal set nodes to prevent attacker
+			from modifying other nodes.</t>
+    </section>
+
+  </middle>
+
+  <back>
+<?rfc rfcedstyle="no"?>
+    <references title="Normative References">
+      &rfc2119;
+      &rfc2136;
+      &rfc2317;
+      &rfc2846;
+    </references>
+  </back>
+</rfc>
+
