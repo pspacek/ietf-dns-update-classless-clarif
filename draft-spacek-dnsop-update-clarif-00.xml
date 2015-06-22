@@ -92,6 +92,10 @@
 		</section>
 
     <section title="Clarification to Requestor Behaviour">
+			<t>Following clarification is applicable only to cases where update requestor
+				intends to update records at terminal node of chain of aliases
+				while keeping the chain of aliases intact. PTR record updates in zones
+				which use <xref target="RFC2317"/> are one case where this behavior is desired.</t>
 
 			<t>MUST follow the whole chain of CNAME and DNAME aliases originating
 			at original owner name until a terminal node of the chain is reached.</t>
