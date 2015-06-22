@@ -85,9 +85,9 @@
 
 			<t>This is a generic problem and is not limited to IN-ADDR.ARPA zone
 				and PTR records. Generally this problem arises when the requestor wants
-				to update records resolvable by potentially following a chain
-				of aliases and the requestor is interested only in values of
-				to-be-updated records but not in the structure of the chain of aliases itself.</t>
+				to update records resolvable using particular name and potentially following a chain
+				of aliases. In such case requestor only wants to update records at 
+				terminal node and to preserve structure of the chain of aliases.</t>
 
 		</section>
 
