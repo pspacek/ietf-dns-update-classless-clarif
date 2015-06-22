@@ -83,7 +83,12 @@
 				an error will be reported	to the requestor if he added non-existence
 				of CNAME record as prerequisite	to the Update Message.</t>
 
-			<t>TODO: generalization - it does not apply only to classless zones and PTR records.</t>
+			<t>This is a generic problem and is not limited to IN-ADDR.ARPA zone
+				and PTR records. Generally this problem arises when the requestor wants
+				to update records resolvable by potentially following a chain
+				of aliases and the requestor is interested only in values of
+				to-be-updated records but not in the structure of the chain of aliases itself.</t>
+
 		</section>
 
     <section title="Clarification to Requestor Behaviour">
