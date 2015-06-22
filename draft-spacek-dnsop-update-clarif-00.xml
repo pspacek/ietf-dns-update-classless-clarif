@@ -75,7 +75,7 @@
 				and use this original node name without further verification in Update Section of the Update Message.</t>
 
 			<t>If the target zone uses <xref target="RFC2317"/> then this behavior
-				results in an attempt to add or delete a record to a node which already contains
+				results in an attempt to add or delete a record from a node which already contains
 				CNAME record and the update fails.</t>
 
 			<t>Such incorrectly constructed update request will be silently ignored
