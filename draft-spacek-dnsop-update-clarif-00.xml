@@ -22,7 +22,7 @@
 
   <front>
 		<title abbrev="DNS UPDATE clarifications">
-			Clarifications to the Classless IN-ADDR.ARPA Delegation
+			Clarifications Dynamic Updates in the Domain Name System (DNS UPDATE)
 		</title>
 
     <author fullname="Petr Spacek" initials="P." surname="Spacek">
