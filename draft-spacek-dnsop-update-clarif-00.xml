@@ -37,11 +37,11 @@
     <workgroup>Internet Engineering Task Force</workgroup>
 
     <abstract>
-			<t>TODO:
-				This document clarifies interaction among
+			<t>This document clarifies interaction among
 				Dynamic Updates in the Domain Name System (DNS UPDATE),
 				Classless IN-ADDR.ARPA delegation,
-				and Secure Domain Name System (DNS) Dynamic Update.</t>
+				and Secure Domain Name System (DNS) Dynamic Update in the presence
+				of CNAME/DNAME redirections.</t>
     </abstract>
 
   </front>
