@@ -131,11 +131,29 @@
     </section>
 
     <section title="Security Considerations">
-			<t>TODO:
-			Canonicalization allows the active attacker to redirect the update
-			to a node of his choice. Update authentication using TSIG or other means
-			should allow clients to modify only minimal set nodes to prevent attacker
-			from modifying other nodes.</t>
+			<t>Canonicalization process changes the owner name which is going to be affected by the update. An active attacker might interfere with canonicalization process and trick the requestor to update a node of attacker's choice if the canonicalization process is not secured by using DNSSEC or other means.</t>
+
+			<t>Security properties of DNS updates using only <xref target="RFC2136">DNS UPDATE</xref> without any security mechanisms on top of it are not affected because an active attacker can very well modify the update message itself.</t>
+
+			<t>Canonicalization generally increases overall risk for implementations
+				of <xref target="RFC3007">Secure DNS Dynamic Update</xref> because
+				an attacker might have a chance to modify the owner name in Update Message
+				before the message is signed by the requestor.
+				An implementation might decide to accept canonicalized names only if
+				overall security level of canonicalization results is sufficient
+				according to local policy.
+				Because the chain of redirections might involve multiple DNS zones,
+				implementations MUST use lowest security status from all links
+				in the chain of redirections when doing security decisions.</t>
+
+			<t>For example, a strict implementation might accept canonicalized names
+				only if all redirections were secured by DNSSEC and the security state
+				of all redirections was "secure". Another implementation might decide
+				that security checks on server side are sufficient so requestors will
+				accept canonical names obtained using insecure protocols.
+				In case of PTR records server might require TCP transport and map
+				IP address of the requestor to canonical owner name and/or check data in
+				Update Message with requestor's identity.</t>
     </section>
 
   </middle>
