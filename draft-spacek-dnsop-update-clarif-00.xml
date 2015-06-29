@@ -22,7 +22,8 @@
 
   <front>
 		<title abbrev="DNS UPDATE clarifications">
-			Clarifications Dynamic Updates in the Domain Name System (DNS UPDATE)
+			Clarifications to the Dynamic Updates
+			in the Domain Name System (DNS UPDATE) specification
 		</title>
 
     <author fullname="Petr Spacek" initials="P." surname="Spacek">
