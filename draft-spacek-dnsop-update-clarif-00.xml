@@ -59,23 +59,23 @@
 					Dynamic Update</xref>.</t>
 
 			<t>It was identified that common implementations using DNS update
-				protocol often ignore existence of CNAME/DNAME redirections and as
-				a result fail to update records if a redirection is used. One common
+				protocol often ignore existence of CNAME/DNAME redirections and, as
+				a result, fail to update records if redirection is used. One common
 				example is failure to update PTR records in classless IN-ADDR.ARPA
 				zones.</t>
 
-			<t><xref target="RFC2317"/> describes how to use CNAME records
+			<t><xref target="RFC2317"/> describes how to use the CNAME records
 				in IN-ADDR.ARPA DNS zones to split administrative control over
 				IN-ADDR.ARPA data for classless networks. The described method
-				is perfectlycompatible with standard DNS resolution but DNS update
+				is perfectly compatible with standard DNS resolution but DNS update
 				requests need special handling described in this document.</t>
 
 			<t anchor="applicability">This clarification is applicable to parties
 				wanting to update records in IN-ADDR.ARPA and other zones without
-				changing existing CNAME/DNAME redirections. An typical example are
+				changing existing CNAME/DNAME redirections. A typical example are
 				PTR record updates in zones which might potentially use
 				<xref target="RFC2317"/>.
-				This clarification is not applicable to cases where aim
+				This clarification is not applicable to cases where the purpose
 				of the DNS update is to change CNAME/DNAME redirection.</t>
 		</section>
 
@@ -95,17 +95,17 @@
 
 
     <section title="Problem Description">
-			<t>Problem described herein typically occurs when an implementation
-				intends to update resource records resolvable using particular owner
+			<t>The problem described herein typically occurs when an implementation
+				intends to update resource records resolvable by using particular owner
 				name while keeping all CNAME/DNAME redirections intact. In other words,
-				aim of the update is to change resource records associated with
+				the purpose of the update is to change resource records associated with
 			  terminal node of (potential) chain of redirections starting at
 				a known owner name.</t>
 
-			<t>Typically this is the case if the resource records are associated
-				with well-known owner name, or an owner name which is derived from
-				data obtained by means outside of DNS. For example, implementations
-				often translate IPv4 address to DNS owner name using algorithm
+			<t>Typically, this is the case when the resource records are associated
+				with a known owner name or an owner name that is derived from
+				data obtained outside of DNS. For example, implementations
+				often translate IPv4 address to DNS owner name using the algorithm
 				from <xref target="RFC1034"/> section 5.2.1.4:</t>
 
 			<figure> <!--anchor="fig-ipv42name"> -->
@@ -115,15 +115,16 @@
         </figure>
 
 			<t>The problem is that implementations often use this original node name
-				in Update Message without checking for redirections.
-				If the original owner name contains redirection then this behavior
+				in an Update Message without checking for redirections.
+				If the original owner name contains redirection, then this behavior
 				results in an attempt to add or delete another record to or from a node
-				which already contains CNAME record and the update fails.</t>
+				that already contains the CNAME record, and the update fails.</t>
 
-			<t>Such naively constructed update request will be silently ignored
+			<t>Such inappropriately constructed update request will be silently ignored
 				in accordance with <xref target="RFC2136"/> section 3.4.2.2.
-				Alternatively, an error will be reported to the requestor if he added
-				non-existence of CNAME record as prerequisite to the Update Message.
+				Alternatively, an error will be reported to the requestor if the 
+        non-existence of the CNAME record was added as a prerequisite to the 
+        Update Message.
 			</t>
 		</section>
 
@@ -134,7 +135,7 @@
 			</t>
 
 			<t>A Requestor MUST resolve (canonicalize) the original owner name
-				(e.g. one derived from IPv4 address) to a canonical owner name before
+				(e.g. the one derived from an IPv4 address) to a canonical owner name before
 				constructing the Update Message. The requestor MUST follow whole chain
 				of redirections until the terminal node of the chain is reached and use
 				canonical name found at the terminal node.
@@ -143,14 +144,14 @@
 			<t>Canonical owner name MUST be used instead of the original owner name
 				in the resulting Update Message:
 				<list style="symbols">
-					<t>All names used in Prerequisite and Update sections MUST be
+					<t>All names used in the Prerequisite and Update sections MUST be
 						canonicalized as specified above. Only prerequisites concerning
-						CNAME or DNAME records are exception to this rule and should not
+						the CNAME or DNAME records are an exception to this rule and should not
 						be canonicalized.</t>
-					<t>ZNAME in Zone Section has to contain name of the zone enclosing
+					<t>ZNAME in the Zone Section has to contain the name of the zone that encloses
 						the canonical owner names.</t>
-					<t>Implementation MAY chose to use canonicalized names in RDATA and
-						Additional Section. This is application specific decision.</t>
+					<t>An implementation MAY chose to use canonicalized names in RDATA and
+						an Additional Section. This is an application specific decision.</t>
 				</list>
 			</t>
     </section>
@@ -162,35 +163,35 @@
 
     <section title="Security Considerations">
 			<t>Canonicalization process changes the owner name which is going to be
-				affected by the update. An active attacker might interfere with
+				affected by the update. An active attacker might interfere with the
 				canonicalization process and trick the requestor to update a node of
-				attacker's choice if the canonicalization process is not secured
-				by using DNSSEC or other means.</t>
+				the attacker's choice if the canonicalization process is not secured
+				by using DNSSEC or by other means.</t>
 
 			<t>Security properties of DNS updates using only
 				<xref target="RFC2136">DNS UPDATE</xref> without any security
-				mechanisms on top of it are not affected because an active attacker
+				mechanisms on top of it are vulnerable anyway because an active attacker
 				can very well modify the update message itself.</t>
 
 			<t>Canonicalization generally increases overall risk for implementations
 				of <xref target="RFC3007">Secure DNS Dynamic Update</xref> because
-				an attacker might have a chance to modify the owner name in
+				an attacker might have a chance to modify the owner name in an
 				Update Message before the message is signed by the requestor.
-				An implementation might decide to accept canonicalized names only if
-				overall security level of canonicalization results is sufficient
-				according to local policy.
+				An implementation might decide to accept canonicalized names only on condition that
+				the overall security status of the canonicalization process is sufficient
+				according to the local policy.
 				Because the chain of redirections might involve multiple DNS zones,
-				implementations MUST use lowest security status from all links
+				implementations MUST use the lowest security status from all links
 				in the chain of redirections when doing security decisions.</t>
 
 			<t>For example, a strict implementation might accept canonicalized names
-				only if all redirections were secured by DNSSEC and the security state
+				only on condition that all redirections were secured by DNSSEC and the security state
 				of all redirections was "secure". Another implementation might decide
-				that security checks on server side are sufficient so requestors will
+				that security checks on a server side are sufficient, so requestors will
 				accept canonical names obtained using insecure protocols.
-				In case of PTR records server might require TCP transport and map
-				IP address of the requestor to canonical owner name and/or check data
-				in Update Message with requestor's identity.</t>
+				In case of PTR records, a server might require the TCP transport and map
+				an IP address of the requestor to the canonical owner name and/or check data
+				in an Update Message with the requestor's identity.</t>
     </section>
 
   </middle>
