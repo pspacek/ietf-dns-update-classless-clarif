@@ -111,7 +111,7 @@
 
 			<figure> <!--anchor="fig-ipv42name"> -->
           <artwork><![CDATA[
-192.0.2.1 -> 2.0.192.in-addr.arpa.
+192.0.2.1 -> 1.2.0.192.in-addr.arpa.
 ]]></artwork>
         </figure>
 
