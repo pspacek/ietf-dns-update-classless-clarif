@@ -137,12 +137,12 @@
 
 			<t>A Requestor MUST resolve (canonicalize) the original owner name
 				(e.g. the one derived from an IPv4 address) to a canonical owner name before
-				constructing the Update Message. The requestor MUST follow whole chain
+				constructing the Update Message. The requestor MUST follow the whole chain
 				of redirections until the terminal node of the chain is reached and use
-				canonical name found at the terminal node.
+				the canonical name found at the terminal node.
 				Implementations MUST detect infinite loops.</t>
 
-			<t>Canonical owner name MUST be used instead of the original owner name
+			<t>The canonical owner name MUST be used instead of the original owner name
 				in the resulting Update Message:
 				<list style="symbols">
 					<t>All names used in the Prerequisite and Update sections MUST be
